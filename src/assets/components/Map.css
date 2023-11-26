@@ -1,0 +1,61 @@
+.todoItem {
+  border: 2px solid rgba(44, 44, 49, 0.3);
+  padding: 1rem 1.35rem;
+  transition: all 0.3s;
+  border-radius: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 26rem;
+  margin-bottom: 2rem;
+}
+.todoItem:hover {
+  box-shadow: 1rem 1rem 2.5rem rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(33, 33, 36, 0.8);
+}
+.todoItem h1 {
+  font-weight: 400;
+  font-size: 1.25rem;
+  width: 39%;
+  padding-right: 1rem;
+}
+
+.date {
+  width: 33%;
+  padding-right: 1rem;
+}
+.date h3 {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: 400;
+}
+
+.todoBtns {
+  display: flex;
+  align-items: center;
+  width: 23%;
+  justify-content: space-between;
+}
+.todoBtns div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(230, 232, 235, 0.5);
+  width: 2.55rem;
+  height: 2.7rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid rgba(230, 232, 235, 0.8);
+}
+.todoBtns div:hover {
+  background-color: rgba(230, 232, 235, 0.8);
+}
+.editBtn svg {
+  color: black;
+}
+.delBtn svg {
+  color: red;
+  width: 1.23rem;
+  height: 1.23rem;
+}

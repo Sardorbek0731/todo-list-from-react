@@ -1,0 +1,24 @@
+.title {
+  font-weight: 400;
+  margin-top: 4rem;
+  font-size: 4rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-bottom: 1rem;
+}
+.firstLetter {
+  color: brown;
+}
+.author {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  margin-bottom: 4rem;
+}
+.author h2 {
+  margin-left: 1.2rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 400;
+  color: brown;
+}
