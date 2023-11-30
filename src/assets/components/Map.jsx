@@ -1,29 +1,80 @@
 /* eslint-disable react/prop-types */
 import "./Map.css";
 
-function MapTodos({ todos, handleDel }) {
-  let date = new Date();
-  let time =
-    date.getHours() +
-    ":" +
-    date.getMinutes() +
-    ", " +
-    date.getDate() +
-    "." +
-    (date.getMonth() + 1) +
-    "." +
-    date.getFullYear();
+function MapTodos({ todos, setTodos, handleDel, inputVal, setInputVal, date }) {
+  const showEdit = (id) => {
+    const booleanTodo = todos.filter((todo) => {
+      return todo.id === id ? (todo.boolean = true) : todo;
+    });
+    setTodos(booleanTodo);
+  };
+
+  const editSaveBtn = (todo, id) => {
+    const booleanTodo = todos.filter((todo) => {
+      return todo.id === id ? (todo.boolean = false) : todo;
+    });
+    setTodos(booleanTodo);
+
+    const filteredValue = inputVal.filter((item) => {
+      return item.id === id ? (todo.inputVal = item.inputVal) : item.inputVal;
+    });
+    setTodos(filteredValue);
+  };
+
+  const changeInput = (inputValue, id) => {
+    const filteredValue = inputVal.filter((item) => {
+      return item.id === id ? (item.inputVal = inputValue) : item.inputVal;
+    });
+    setInputVal(filteredValue);
+
+    const newDate = inputVal.filter((item) => {
+      return item.id === id ? (item.time = date) : item.inputVal;
+    });
+    setTodos(newDate);
+  };
+
   return (
     <div className="todoItems">
-      {todos.map((todo) => {
+      {todos.map((todo, i) => {
         return (
           <div className="todoItem" key={todo.id}>
-            <h1>{todo.inputVal}</h1>
-            <div className="date">
-              <h3>{time}</h3>
+            <div className="inputOrVal">
+              <h1 className={todo.boolean ? "hidden" : "value"}>
+                {todo.inputVal}
+              </h1>
+              <input
+                type="text"
+                defaultValue={todo.inputVal}
+                onChange={(e) => {
+                  if (e.target.value.trim()) {
+                    changeInput(e.target.value, todo.id);
+                  } else {
+                    changeInput(" ", todo.id);
+                  }
+                }}
+                className={todo.boolean ? "editInput" : "hidden"}
+              />
             </div>
-            <div className="todoBtns">
-              <div className="editBtn">
+            <div className="date">
+              <h3 className={todo.boolean ? "hidden" : "date"}>{todo.time}</h3>
+            </div>
+            <button
+              className={todo.boolean ? "editSaveBtn" : "hidden"}
+              onClick={() => {
+                if (inputVal[i].inputVal.trim()) {
+                  editSaveBtn(todo, todo.id);
+                }
+              }}
+            >
+              Saqlash
+            </button>
+            <div className={todo.boolean ? "hidden" : "todoBtns"}>
+              <div
+                className="editBtn"
+                onClick={() => {
+                  showEdit(todo.id);
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

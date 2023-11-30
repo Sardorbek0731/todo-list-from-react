@@ -3,19 +3,29 @@ import "./Forms.css";
 import { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function Forms({ newTodos }) {
+function Forms({ newTodos, newInputVal, date }) {
   const inputVal = useRef();
   const form = useRef();
 
   const handleAdd = (e) => {
     e.preventDefault();
 
-    const todo = {
-      inputVal: inputVal.current.value,
-      id: uuidv4(),
-    };
-    newTodos(todo);
+    if (inputVal.current.value.trim().length > 0) {
+      const todo = {
+        inputVal: inputVal.current.value,
+        id: uuidv4(),
+        boolean: false,
+        time: date,
+      };
+      newTodos(todo);
 
+      const inputValue = {
+        inputVal: todo.inputVal,
+        id: todo.id,
+        time: date,
+      };
+      newInputVal(inputValue);
+    }
     form.current.reset();
   };
   return (
